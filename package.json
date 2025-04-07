@@ -1,0 +1,25 @@
+{
+  "name": "5c_brambillacicoriadongfalcone_poker-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaFalcone1/5C_BrambillaCicoriaDongFalcone_Poker-One.git"
+  },
+  "author": "Andrea Falcone, Davide Cicoria, Gianluca Brambilla, Marcello Dong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreaFalcone1/5C_BrambillaCicoriaDongFalcone_Poker-One/issues"
+  },
+  "homepage": "https://github.com/AndreaFalcone1/5C_BrambillaCicoriaDongFalcone_Poker-One#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.5"
+  }
+}
