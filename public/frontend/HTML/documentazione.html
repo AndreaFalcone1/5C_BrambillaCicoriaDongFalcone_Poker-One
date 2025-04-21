@@ -23,6 +23,8 @@
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" type="text/css" href="assets/css/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="assets/css/table-idocs.css">
+
+    <link rel="stylesheet" type="text/css" href="../../frontend/CSS/style.css" />
 </head>
 
 <body data-spy="scroll" data-target=".idocs-navigation" data-offset="125">
@@ -322,6 +324,36 @@
                             <h2>UML</h2>
                             <p class="lead">Qui sono presenti i vari diagrammi UML:</p>
 
+                        </section>
+
+                        <section id="schemaE/R">
+                            <h2>Schema E/R</h2>
+                            <figure>
+                                <img src="/assets/images/schemaER-pokerone.png" alt="Schema E/R">
+                                <figcaption class="lead">Modello concettuale del progetto</figcaption>
+                            </figure>
+
+                            <h2>Schema Logico</h2>
+                            <ul>
+                                <li>
+                                    Utenti&#40;<u>Email</u>, Username, Nome, Cognome, DataNascita, BilancioFiches&#41;&#59;
+                                </li>
+                            </ul>
+
+                            <h2>Tabella dei vincoli</h2>
+                            <table>
+                                <thead>
+                                    <tr class="bg"><td><b>Relazione</b></td><td><b>Attributo</b></td><td><b>Vincoli</b></td><td><b>Formato</b></td><td><b>Dimensioni</b></td></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Utenti</td><td>Email</td><td>PK</td><td>varchar</td><td>30</td></tr>
+                                    <tr><td>Utenti</td><td>Username</td><td>NOT NULL</td><td>varchar</td><td>10</td></tr>
+                                    <tr><td>Utenti</td><td>Nome</td><td>NOT NULL</td><td>varchar</td><td>15</td></tr>
+                                    <tr><td>Utenti</td><td>Cognome</td><td>NOT NULL</td><td>varchar</td><td>15</td></tr>
+                                    <tr><td>Utenti</td><td>DataNascita</td><td>NOT NULL</td><td>date</td><td>10</td></tr>
+                                    <tr><td>Utenti</td><td>BilancioFiches</td><td>NOT NULL, >= 0</td><td>integer</td><td>9</td></tr>
+                                </tbody>
+                            </table>
                         </section>
 
                         <section id="umlcasiduso">
