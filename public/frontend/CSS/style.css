@@ -5,3 +5,11 @@ table, th, td {
 .bg {
     background-color: yellow;
 }
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block;
+}
