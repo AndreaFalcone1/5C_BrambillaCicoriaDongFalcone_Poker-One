@@ -5,57 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Poker-One</title>
+    <link rel="stylesheet" href="../CSS/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
 
 <body>
-    <div id="welcome" class="page">
-        <span class="text-center">
-            <h2>Benvenuto su Poker-One!</h2>
-        </span>
-        <button type="button" id="login" class="btn btn-light">Login</button>
-        <button type="button" id="register" class="btn btn-light">Register</button>
-    </div>
-
-    <div id="navbar" class="hidden">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#lobby">Poker-One</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#usersList">Utenti</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tablesList">Tavoli</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#personalArea">Area Personale</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-
-    <div id="lobby" class="page"></div>
-
-    <div id="usersList" class="page"></div>
-
-    <div id="tablesList" class="page"></div>
-
-    <div id="personalArea" class="page">
-        <div id="personalInformations">
-            <!-- table dinamica generata col JS con le informazioni dell'account -->
+    <div id="bodyContainer" class="container">
+        <div id="welcome" class="page">
+            <span class="text-center">
+                <h2>Benvenuto su Poker-One!</h2>
+            </span>
+            <button type="button" id="login" class="btn btn-light">Login</button>
+            <button type="button" id="register" class="btn btn-light">Register</button>
         </div>
+    
+        <div id="navbar" class="hidden">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#lobby">Poker-One</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#usersList">Utenti</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#tablesList">Tavoli</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#personalArea">Area Personale</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    
+        <div id="lobby" class="page"></div>
+    
+        <div id="usersList" class="page"></div>
+    
+        <div id="tablesList" class="page"></div>
+    
+        <div id="personalArea" class="page">
+            <div id="personalInformations">
+                <!-- table dinamica generata col JS con le informazioni dell'account -->
+            </div>
+        </div>
+    
+        <div id="table" class="page"></div>
+    
+        <div id="documentation" class="page"></div>
     </div>
 
-    <div id="table" class="page"></div>
-
-    <div id="documentation" class="page"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
 </body>
