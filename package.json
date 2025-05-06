@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/AndreaFalcone1/5C_BrambillaCicoriaDongFalcone_Poker-One#readme",
   "dependencies": {
-    "bootstrap": "^5.3.5"
+    "bootstrap": "^5.3.5",
+    "socket-io": "^1.0.0"
   }
 }
