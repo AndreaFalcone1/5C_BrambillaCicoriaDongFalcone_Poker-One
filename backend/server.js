@@ -45,7 +45,6 @@ io.on('connection', (socket) => {
 
     //
 
-
 });
 
 server.listen(conf.port, () => {
