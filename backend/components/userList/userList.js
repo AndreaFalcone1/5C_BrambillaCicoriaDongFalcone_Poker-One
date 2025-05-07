@@ -1,11 +1,18 @@
-export const createUserList = function(socket) {
+const createUserList = function(socket, users) {
 
     return {
         setOnlineUsers: function () {
+            users.push(socket.id);
+
             // Appena il frontend richiede la lista user
-            socket.on("recvUtentiOnline", () => {
+            socket.on("getUtentiOnline", () => {
                 // Gli manda la lista di utenti online
-                socket.emit("utentiOnline", null);
+                socket.emit("utentiOnline", users);
+            });
+
+            // Se si disconnette qualcuno riaggiorna la lista
+            socket.on('disconnect', () => {
+                users = users.filter(user => user !== socket.id)
             });
         },
         inviteSender: async function (invited, table) {

@@ -11,12 +11,12 @@ const bodyParser = require("body-parser");
 const { Server } = require('socket.io'); 
 const conf = JSON.parse(fs.readFileSync("./conf.json"));
 
-import { register } from "module";
 //
 //  Modules
 //
 
-import { createRegisterHandler } from "./components/register/createRegisterHandler.js";
+const { createRegisterHandler } = require("./components/register/createRegisterHandler.js");
+const { createUserList } = require("./components/userList/userList.js");
 
 //
 //  Code
@@ -29,7 +29,8 @@ app.use(
   }),
 );
 
-app.use("/", express.static(path.join(__dirname, "public")));
+// Qui c'è un problema, il path è giusto ma non prende i file perché sono in cartelle diverse
+app.use("/", express.static(path.join(__dirname, "../public/")));
 const server = http.createServer(app);
 const io = new Server(server);
 
@@ -37,13 +38,17 @@ const io = new Server(server);
 //  Listeners
 //
 
+// Online users
+let users = []
+
 io.on('connection', (socket) => {
-    
     //Register
     const registerHandler  =  createRegisterHandler(socket);
     registerHandler.registerReciver();
 
-    //
+    //UserList
+    const userList = createUserList(socket, users)
+    userList.setOnlineUsers()
 
 });
 

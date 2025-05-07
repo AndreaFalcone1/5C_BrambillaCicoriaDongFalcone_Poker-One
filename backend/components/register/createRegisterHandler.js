@@ -1,4 +1,4 @@
-export const createRegisterHandler = function(socket) {
+const createRegisterHandler = function(socket) {
 
     return {
         registerReciver: async  function () {
