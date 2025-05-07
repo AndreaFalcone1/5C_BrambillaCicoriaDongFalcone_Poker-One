@@ -2,7 +2,9 @@ const createUserList = function(socket, users) {
 
     return {
         setOnlineUsers: function () {
+
             users.push(socket.id);
+            socket.emit("utentiOnline", users); // In tempo reale 
 
             // Appena il frontend richiede la lista user
             socket.on("getUtentiOnline", () => {
