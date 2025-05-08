@@ -18,4 +18,4 @@ const createLoginHandler = function(socket) {
 
 }
 
-module.exports = createRegisterHandler;
+module.exports = createLoginHandler;

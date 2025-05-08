@@ -63,7 +63,6 @@ io.on('connection', (socket) => {
     registerHandler.registerReciver(database, mailer);
 
     //Login
-
     const loginHandler = createLoginHandler(socket);
     loginHandler.loginReciver();
 
