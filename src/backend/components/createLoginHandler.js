@@ -4,14 +4,14 @@ const createLoginHandler = function(socket) {
         loginReciver: function (database) {
             socket.on('loginSender', async (message) => {
 
-                console.log(database.getUser(message.email, message.password));
-
-                if(database.getUser(message.email, message.password)) {
+                let data = await database.getUser(message.email, message.password);
+                
+                if(data.length == 1) {
                     socket.emit('loginReciver', 'ok');
                 } else {
                     socket.emit('loginReciver', 'ko');
                 }
-                
+
             })
         }
     }
