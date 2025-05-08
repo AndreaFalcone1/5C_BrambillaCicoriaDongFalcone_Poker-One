@@ -21,9 +21,10 @@ require('dotenv').config({
 //  Modules
 //
 
-const  createRegisterHandler = require("./backend/components/createRegisterHandler.js");
-const  createUserList = require("./backend/components/createUserList.js");
-const  createMailer  = require("./backend/components/createMailer.js");
+const createRegisterHandler = require("./backend/components/createRegisterHandler.js");
+const createLoginHandler = require("./backend/components/createLoginHandler.js")
+const createUserList = require("./backend/components/createUserList.js");
+const createMailer  = require("./backend/components/createMailer.js");
 const createDatabase  = require("./backend/components/createDatabase.js")
 
 //
@@ -63,6 +64,8 @@ io.on('connection', (socket) => {
 
     //Login
 
+    const loginHandler = createLoginHandler(socket);
+    loginHandler.loginReciver();
 
     //UserList
     //const userList = createUserList(socket, users)

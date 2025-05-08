@@ -1,19 +1,15 @@
 export const createLoginHandler = function(socket) {
 
     return {
-        registerSender: async function (email, password, username, nome, cognome, data_nascita) {
-            await socket.emit('registerSender', {
+        loginSender: async function (email, password) {
+            await socket.emit('loginSender', {
                 email: email,
                 password: password,
-                username: username,
-                nome: nome,
-                cognome: cognome,
-                data_nascita: data_nascita,
             });
         },
-        registerReciver: async  function () {
-            await socket.on('registerReciver', () => {
-                
+        loginReciver: async  function () {
+            await socket.on('loginReciver', (message) => {
+                console.log(message);
             })
         }
     }

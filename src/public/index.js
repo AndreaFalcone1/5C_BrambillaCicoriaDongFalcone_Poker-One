@@ -18,5 +18,8 @@ const socket = io();
 const loginHandling = createLoginHandler(socket);
 const registerHandling = createRegisterHandler(socket);
 
-console.log(registerHandling.registerSender('falconeandrea@itis-molinari.eu', 'xXSaraCinescaXx', 'Sara', 'Cinesca', '10/02/2000'));
-registerHandling.registerReciver();
+//console.log(registerHandling.registerSender('falconeandrea@itis-molinari.eu', 'xXSaraCinescaXx', 'Sara', 'Cinesca', '10/02/2000'));
+//registerHandling.registerReciver();
+
+console.log(loginHandling.loginSender("falconeandrea@itis-molinari.eu", "galGdgj4AlLxG8z"));
+loginHandling.loginReciver();

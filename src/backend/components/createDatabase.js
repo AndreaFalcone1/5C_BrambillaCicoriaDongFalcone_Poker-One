@@ -39,10 +39,10 @@ const createDatabase = (mysql) => {
             `);
         },
         getUser: async function (email) {
-            await executeQuery(`SELECT * FROM pokerone.utenti WHERE email='${email}`);
+            return await executeQuery(`SELECT * FROM pokerone.utenti WHERE email='${email}`);
         },
         getAllUsers: async function() {
-            await executeQuery(`SELECT * FROM pokerone.utenti;`);
+            return await executeQuery(`SELECT * FROM pokerone.utenti;`);
         }
     }
 
