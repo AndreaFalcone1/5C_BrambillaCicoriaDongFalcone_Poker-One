@@ -21,7 +21,7 @@ require('dotenv').config({
 //
 
 const { createRegisterHandler } = require("./backend/components/createRegisterHandler.js");
-const { createUserList } = require("./backend/components/userList.js");
+const { createUserList } = require("./backend/components/createUserList.js");
 const { createMailer } = require("./backend/components/createMailer.js");
 const { createDatabase } = require("./backend/components/createDatabase.js")
 
