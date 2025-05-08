@@ -65,7 +65,7 @@ io.on('connection', (socket) => {
 
     //Login
     const loginHandler = createLoginHandler(socket);
-    loginHandler.loginReciver();
+    loginHandler.loginReciver(database);
 
     // Userlist
     const userList = createUserList(socket, users)
