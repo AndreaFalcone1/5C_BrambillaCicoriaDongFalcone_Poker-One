@@ -21,6 +21,13 @@
   "homepage": "https://github.com/AndreaFalcone1/5C_BrambillaCicoriaDongFalcone_Poker-One#readme",
   "dependencies": {
     "bootstrap": "^5.3.5",
-    "socket-io": "^1.0.0"
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "moment": "^2.30.1",
+    "mysql2": "^3.14.1",
+    "nodemailer": "^7.0.2",
+    "socket-io": "^1.0.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   }
 }
