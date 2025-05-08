@@ -1,34 +1,35 @@
-export const createUserList = function(parentElement) {
-    const socket = io();
-    let userList;
+/* userList : [
+    {
+        id: socket.id,
+        username: socket.username, 
+        table: socket.table
+    }
+]
+*/
 
+import { generateList } from "./createLista.js"
+
+export const createUserList = (socket) => {
     return {
         getOnlineUsers: function () {
+            let ul = generateList(document.getElementById("usersList"), socket);
+            ul.setCallback(this.inviteSender);
+
             // Chiedi al backend di inviarti la lista
             // Voglio prendere la lista degli utenti online utente clicca -> lista utenti
-            socket.emit("utentiOnline"); 
+            socket.emit("getUtentiOnline");
 
             // Se l'utente resta fisso sulla schermata di lista utenti questa ogni volta si aggiorna
             socket.on("utentiOnline", (users) => {
-                // Supponiamo che users sia una l'username di tutti gli utenti
-                userList = users;
                 // Ogni volta che riceve una nuova lista di utenti online ridisegna tutto
-                this.render();
+                ul.setData(users);
+                ul.render();
             });
+
         },
         inviteSender: function (invited, table) {
             // Invito utente
-            socket.emit("invito", {invited, table})
+            socket.emit("invito", { invited, table })
         },
-        // Serve a creare la parte grafica
-        render: function() {
-            let htmlTemplate = "<li>%TEMPLATE%</li>";
-            let html = "<ul>";
-            userList.forEach(user => {
-                html += htmlTemplate.replace("%TEMPLATE%", user);
-            });
-            html += "</ul>"
-            parentElement.innerHTML = html;
-        }
     }
 }
