@@ -1,11 +1,9 @@
-import nodemailer from "../../../node_modules/nodemailer/lib/nodemailer.js";
-
-export const createMailer = function () {
+module.exports = function (nodemailer) {
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.MAIL_PWDSENDER,
+      user: process.env.MAIL_PWDSENDER,createMailer,
       pass: process.env.PASSWORD_MAIL
     }
   });
@@ -29,7 +27,5 @@ export const createMailer = function () {
       });
     }
   }
-
-
-
 }
+

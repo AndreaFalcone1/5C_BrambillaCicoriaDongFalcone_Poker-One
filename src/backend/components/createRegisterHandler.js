@@ -1,5 +1,4 @@
-export const createRegisterHandler = function(socket) {
-
+ const createRegisterHandler = function(socket) {
     function generateCredentials(length) {
         var result = '';
         var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -27,3 +26,5 @@ export const createRegisterHandler = function(socket) {
     }
 
 }
+
+module.exports = createRegisterHandler;

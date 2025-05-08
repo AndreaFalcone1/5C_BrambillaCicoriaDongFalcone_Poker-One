@@ -11,6 +11,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const { Server } = require('socket.io'); 
 const conf = JSON.parse(fs.readFileSync("src/conf/conf.json"));
+const nodemailer = require("nodemailer");
 
 require('dotenv').config({
   path: "src/conf/.env"
@@ -20,10 +21,10 @@ require('dotenv').config({
 //  Modules
 //
 
-const { createRegisterHandler } = require("./backend/components/createRegisterHandler.js");
-const { createUserList } = require("./backend/components/createUserList.js");
-const { createMailer } = require("./backend/components/createMailer.js");
-const { createDatabase } = require("./backend/components/createDatabase.js")
+const  createRegisterHandler = require("./backend/components/createRegisterHandler.js");
+const  createUserList = require("./backend/components/createUserList.js");
+const  createMailer  = require("./backend/components/createMailer.js");
+const createDatabase  = require("./backend/components/createDatabase.js")
 
 //
 //  Code
@@ -49,7 +50,7 @@ const io = new Server(server);
 // Online users
 let users = []
 
-const mailer = createMailer();
+const mailer = createMailer(nodemailer);
 
 const database = createDatabase(mysql);
 database.build();

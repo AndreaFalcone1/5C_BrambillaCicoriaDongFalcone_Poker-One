@@ -1,4 +1,4 @@
-export const createUserList = function(socket, users) {
+const createUserList = function(socket, users) {
 
     return {
         setOnlineUsers: function () {
@@ -25,3 +25,5 @@ export const createUserList = function(socket, users) {
         }
     }
 }
+
+module.exports = createUserList;

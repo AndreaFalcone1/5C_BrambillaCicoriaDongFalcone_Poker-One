@@ -1,4 +1,4 @@
-export const createDatabase = (mysql) => {
+const createDatabase = (mysql) => {
     
     let connection = mysql.createConnection(process.env.DB_URL);
 
@@ -47,3 +47,5 @@ export const createDatabase = (mysql) => {
     }
 
 }
+
+module.exports = createDatabase;
