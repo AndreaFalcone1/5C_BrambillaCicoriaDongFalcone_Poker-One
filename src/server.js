@@ -68,8 +68,9 @@ io.on('connection', (socket) => {
     loginHandler.loginReciver(database);
 
     // Userlist
-    const userList = createUserList(socket, users)
-    userList.setOnlineUsers()
+    const userList = createUserList(io, socket, users);
+    userList.setOnlineUsers();
+    userList.inviteSender();
 
 });
 

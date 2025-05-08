@@ -13,14 +13,21 @@ const register = document.getElementById("register");
 //
 //  Vars
 //
-
 const socket = io();
 
-const loginHandling = createLoginHandler(socket);
-const registerHandling = createRegisterHandler(socket);
-const userList = createUserList(socket);
+socket.on("connect", () => {
+    const loginHandling = createLoginHandler(socket);
+    const registerHandling = createRegisterHandler(socket);
+    const userList = createUserList(socket);
+
+    socket.emit("connessioneIniziale", {
+        username: "nomeut", 
+        table: null,
+    });
+
+    loginHandling.loginReciver();
+    userList.getOnlineUsers();
+    userList.waitingInvites();
+});
 //console.log(registerHandling.registerSender('falconeandrea@itis-molinari.eu', 'xXSaraCinescaXx', 'Sara', 'Cinesca', '10/02/2000'));
 //registerHandling.registerReciver();
-
-loginHandling.loginReciver();
-userList.getOnlineUsers();

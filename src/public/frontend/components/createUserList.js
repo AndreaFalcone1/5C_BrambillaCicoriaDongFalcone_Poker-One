@@ -1,12 +1,3 @@
-/* userList : [
-    {
-        id: socket.id,
-        username: socket.username, 
-        table: socket.table
-    }
-]
-*/
-
 import { generateList } from "./createLista.js"
 
 export const createUserList = (socket) => {
@@ -25,11 +16,15 @@ export const createUserList = (socket) => {
                 ul.setData(users);
                 ul.render();
             });
-
+        },
+        waitingInvites: function () {
+            socket.on("invitato", data => {
+                alert("Hai ricevuto un invito da " + data.from);
+            });
         },
         inviteSender: function (invited, table) {
             // Invito utente
-            socket.emit("invito", { invited, table })
+            socket.emit("invito", { invited, table });
         },
     }
 }
