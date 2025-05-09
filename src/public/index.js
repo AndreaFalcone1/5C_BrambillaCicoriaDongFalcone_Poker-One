@@ -2,6 +2,7 @@ import { createNavigator } from "./frontend/components/createNavigator.js";
 import { createRegisterHandler } from "./frontend/components/createRegisterHandler.js"
 import { createLoginHandler } from "./frontend/components/createLoginHandler.js"
 import { createForm } from "./frontend/components/createForm.js"
+import { createUserList } from "./frontend/components/createUserList.js";
 
 //
 //  Binding
@@ -16,12 +17,27 @@ const divForm = document.getElementById("divFormLoginRegister");
 //  Vars
 //
 
+const form = createForm(divForm);
+
+/*
 const socket = io();
 
-const loginHandling = createLoginHandler(socket);
-const registerHandling = createRegisterHandler(socket);
+socket.on("connect", () => {
+    const loginHandling = createLoginHandler(socket);
+    const registerHandling = createRegisterHandler(socket);
+    const userList = createUserList(socket);
 
-const form = createForm(divForm);
+    socket.emit("connessioneIniziale", {
+        username: "nomeut", 
+        table: null,
+    });
+
+    loginHandling.loginReciver();
+    userList.getOnlineUsers();
+    userList.waitingInvites();
+});
+
+*/
 
 //
 //
@@ -54,6 +70,3 @@ registerButton.onclick = function() {
 }
 
 form.render();
-
-
-

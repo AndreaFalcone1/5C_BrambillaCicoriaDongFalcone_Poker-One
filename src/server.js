@@ -22,10 +22,11 @@ require('dotenv').config({
 //
 
 const createRegisterHandler = require("./backend/components/createRegisterHandler.js");
-const createLoginHandler = require("./backend/components/createLoginHandler.js")
+const createLoginHandler = require("./backend/components/createLoginHandler.js");
 const createUserList = require("./backend/components/createUserList.js");
 const createMailer  = require("./backend/components/createMailer.js");
 const createDatabase  = require("./backend/components/createDatabase.js")
+
 
 //
 //  Code
@@ -64,11 +65,12 @@ io.on('connection', (socket) => {
 
     //Login
     const loginHandler = createLoginHandler(socket);
-    loginHandler.loginReciver();
+    loginHandler.loginReciver(database);
 
-    //UserList
-    //const userList = createUserList(socket, users)
-    //userList.setOnlineUsers()
+    // Userlist
+    const userList = createUserList(io, socket, users);
+    userList.setOnlineUsers();
+    userList.inviteSender();
 
 });
 
