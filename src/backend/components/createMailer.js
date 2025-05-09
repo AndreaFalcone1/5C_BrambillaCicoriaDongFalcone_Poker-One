@@ -15,7 +15,7 @@ const createMailer = function (nodemailer) {
         from: process.env.MAIL_PWDSENDER,
         to: mail,
         subject: 'Registrazione Poker-One',
-        text: `Benvenuto nel miglior sito di poker dell'anno!\nEcco la password del tuo account mi raccomando non perderla!\nPassword: '${userPwd}'`
+        text: `Benvenuto nel miglior sito di poker dell'anno!\nEcco la password del tuo account mi raccomando non perderla!\nPassword: ${userPwd}`
       };
 
       await transporter.sendMail(mailOptions, function (error, info) {

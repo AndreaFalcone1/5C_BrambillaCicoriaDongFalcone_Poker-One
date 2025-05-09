@@ -19,12 +19,10 @@ const divForm = document.getElementById("divFormLoginRegister");
 
 const form = createForm(divForm);
 
-/*
 const socket = io();
-
+/*
 socket.on("connect", () => {
-    const loginHandling = createLoginHandler(socket);
-    const registerHandling = createRegisterHandler(socket);
+    
     const userList = createUserList(socket);
 
     socket.emit("connessioneIniziale", {
@@ -36,8 +34,10 @@ socket.on("connect", () => {
     userList.getOnlineUsers();
     userList.waitingInvites();
 });
-
 */
+
+const loginHandling = createLoginHandler(socket);
+const registerHandling = createRegisterHandler(socket);
 
 //
 //

@@ -4,8 +4,9 @@ export const createLoginHandler = function(socket) {
         loginSender: function (email, password) {
             socket.emit('loginSender', {
                 email: email,
-                password: password,
+                password: password
             });
+            return "Success!"
         },
         loginReciver: function () {
             socket.on('loginReciver', (message) => {

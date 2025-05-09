@@ -9,7 +9,7 @@ const createDatabase = (mysql) => {
                  console.error(err);
                  reject();
               }
-              console.log(sql + '\ndone\n'); 
+              console.log(sql + 'done\n'); 
               resolve(result);
            });
         });

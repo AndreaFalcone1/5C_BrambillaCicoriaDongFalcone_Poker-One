@@ -3,27 +3,51 @@ export const createForm = (parentElement) => {
     let type = '';
 
     const templateLogin = `
-        <div class="">    
-            <form class="">
-                <input type="text" id="loginEmail"/>
-                <input type="text" id="loginPassword"/>
-                <button type="button" id="loginSubmit">Submit</button>
-                <button type="button" id="loginCancel">Cancel</button>
+        <div class="mb-3">    
+            <form>
+                <div class="mb-3"> 
+                    <label for="loginEmail" class="form-label">Email: </label>
+                    <input type="email" class="form-control" placeholder="pippo@gmail.com" id="loginEmail"/><br>
+                </div>
+                <div class="mb-3">     
+                    <label for="loginPassword" class="form-label">Password: </label>
+                    <input type="password" class="form-control" placeholder="•••••••••" id="loginPassword"/><br>
+                </div>
+                <div class="mb-3">     
+                    <button type="button" class="btn btn-primary" id="loginSubmit">Submit</button>
+                    <button type="button" class="btn btn-primary" id="loginCancel">Cancel</button>
+                </div>
             </form>
         </div>
     `;
 
     const templateRegister = `
-        <div class="">    
-            <form class="">
-                <input type="text" id="registerUsername"/>
-                <input type="text" id="registerEmail"/>
-                <input type="text" id="registerPassword"/>
-                <input type="text" id="registerName"/>
-                <input type="text" id="registerSurname"/>
-                <input type="date" id="registerDateOfBirth"/>
-                <button type="button" id="registerSubmit">Submit</button>
-                <button type="button" id="registerCancel">Cancel</button>
+        <div class="mb-3">    
+            <form>
+                <div class="mb-3">
+                    <label for="registerUsername" class="form-label">Username: </label>
+                    <input type="text" placeholder="xXDavidecico06Xx" class="form-control" id="registerUsername"/>
+                </div>
+                <div class="mb-3">
+                    <label for="registerEmail" class="form-label">Email: </label>
+                    <input type="email" placeholder="pippo@gmail.com" class="form-control" id="registerEmail"/>
+                </div>
+                <div class="mb-3">    
+                    <label for="registerName" class="form-label">Name: </label>
+                    <input type="text" placeholder="Davide" class="form-control" id="registerName"/>
+                </div>
+                <div class="mb-3">
+                    <label for="registerSurname" class="form-label">Surname: </label>
+                    <input type="text" placeholder="Cicoria" class="form-control" id="registerSurname"/>
+                </div>
+                <div class="mb-3">
+                    <label for="registerDateOfBirth" class="form-label">Date: </label>
+                    <input type="date" class="form-control" id="registerDateOfBirth"/>
+                </div>
+                
+                <button type="button" class="btn btn-primary" id="registerSubmit">Submit</button>
+                <button type="button" class="btn btn-primary" id="registerCancel">Cancel</button>
+                
             </form>
         </div>
     `;

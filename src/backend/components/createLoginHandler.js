@@ -5,7 +5,7 @@ const createLoginHandler = function(socket) {
             socket.on('loginSender', async (message) => {
 
                 let data = await database.getUser(message.email, message.password);
-                
+
                 if(data.length == 1) {
                     socket.username = data[0].username;
                     socket.table = null;
