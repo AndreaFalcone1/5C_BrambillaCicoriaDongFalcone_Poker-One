@@ -72,7 +72,7 @@ loginButton.onclick = function() {
                 socket2.on("connect", () => {
                     socket2.emit("connessioneIniziale", {
                         username: userData.username, 
-                        table: 0,
+                        table: null,
                     });
                     socket2.username = userData.username;
                 

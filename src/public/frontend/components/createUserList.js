@@ -12,6 +12,7 @@ export const createUserList = (socket) => {
 
             // Se l'utente resta fisso sulla schermata di lista utenti questa ogni volta si aggiorna
             socket.on("utentiOnline", (users) => {
+                console.log(users);
                 // Ogni volta che riceve una nuova lista di utenti online ridisegna tutto
                 ul.setData(users);
                 ul.render();
