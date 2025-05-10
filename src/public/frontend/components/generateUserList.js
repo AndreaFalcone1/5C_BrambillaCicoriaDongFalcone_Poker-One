@@ -11,12 +11,12 @@ export const generateUserList = (parentElement, socket) => {
             let inviteButtonTemplate = '<button class="inviter" id="invite_%TEMPLATE%">invita</button>'
             let html = "<ul>";
             data.forEach(user => {
-                //if (user.table == null /*&& user.id != socket.id*/) {
+                if (user.table == null && user.id != socket.id) {
                     html += htmlTemplate.replace("%TEMPLATE%", user.username);
                     html += inviteButtonTemplate.replace("%TEMPLATE%", user.username)
-                //} else if (user.id == socket.id) {
-                    //html += htmlTemplate.replace("%TEMPLATE%", user.username + "(You)");
-                //}
+                } else if (user.id == socket.id) {
+                    html += htmlTemplate.replace("%TEMPLATE%", user.username + "(You)");
+                }
             });
             html += "</ul>";
             parentElement.innerHTML = html;
