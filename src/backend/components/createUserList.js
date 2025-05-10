@@ -3,7 +3,6 @@ const createUserList = function (io, socket, users) {
         setOnlineUsers: function () {
             // Connessione di un nuovo utente 
             socket.on("connessioneIniziale", (data) => {
-                users = users.filter(user => user.username !== data.username);
                 users.push({
                     id: socket.id,
                     username: data.username,
