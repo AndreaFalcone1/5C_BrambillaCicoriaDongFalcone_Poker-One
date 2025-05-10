@@ -4,31 +4,36 @@ export const createRegisterHandler = function(socket) {
     return {
         registerSender: function (email, username, nome, cognome, data_nascita) {
                 
-            //Username Check
+            // Controllo se i campi sono vuoti
+            if (!email || !username || !nome || !cognome || !data_nascita) {
+                return 'Tutti i campi devono essere compilati!';
+            }
+
+            // Controllo Username
             if(username.match(/[\^°<>#*~!"§$%?®©¶]+/)) {
-                return 'Username not valid!'
+                return 'Username non valido!';
             }
 
-            //Username Check
+            // Controllo Nome
             if(nome.match(/[\^°<>#*~!"§$%?®©¶]+/)) {
-                return 'Name not valid!'
+                return 'Nome non valido!';
             }
 
-            //Username Check
+            // Controllo Cognome
             if(cognome.match(/[\^°<>#*~!"§$%?®©¶]+/)) {
-                return 'Surname not valid!'
+                return 'Cognome non valido!';
             }
 
-            //Check Date
+            // Controllo Data
             moment().format(); 
             let now = moment();
-            let date = moment(data_nascita, "MM-DD-YYYY")
+            let date = moment(data_nascita, "MM-DD-YYYY");
 
             if (now.diff(date, 'years') < 18 || date > now) {
-                return 'Date not valid!'
+                return 'Data non valida!';
             }
             
-            //Send if it's correct
+            // Invia se è corretto
             socket.emit('registerSender',  {
                 email: email,
                 username: username,
@@ -36,13 +41,12 @@ export const createRegisterHandler = function(socket) {
                 cognome: cognome,
                 data_nascita: data_nascita,
             });
-            return "Success!";
+            return "Registrazione avvenuta con successo!";
         },
         registerReciver: function () {
             socket.on('registerReciver', (message) => {
                 console.log(message);
-            })
+            });
         }
     }
-
 }
