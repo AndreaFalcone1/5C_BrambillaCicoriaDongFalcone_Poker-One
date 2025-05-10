@@ -5,6 +5,8 @@ import { createForm } from "./frontend/components/createForm.js"
 import { createUserList } from "./frontend/components/createUserList.js";
 import { createTableList } from "./frontend/components/createTableList.js";
 
+location.href="#welcome";
+
 //
 //  Binding
 //
@@ -13,6 +15,8 @@ const loginButton = document.getElementById("login");
 const registerButton = document.getElementById("register");
 
 const divForm = document.getElementById("divFormLoginRegister");
+
+const navigator = createNavigator(document.getElementById('bodyContainer'));
 
 //
 //  Vars
@@ -37,6 +41,18 @@ loginButton.onclick = function() {
     form.onSubmit(function (dict) {
         console.log(loginHandling.loginSender(dict.email, dict.password));
         loginHandling.loginReciver();
+        
+        document.getElementById('navbar').classList.remove('hidden');
+        divForm.classList.add('hidden');
+        location.href='#lobby';
+
+        //creazione tabella dati personali nel div area personale
+        const personalInfosDiv = document.getElementById('personalInformations');
+
+        let html = '<table>';
+
+        html += '</table>';
+        personalInfosDiv.innerHTML = html;
     });
 
     form.render();

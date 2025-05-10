@@ -10,7 +10,6 @@ const show = (element) => {
  
 export const createNavigator = (parentElement) => {
     const pages = Array.from(parentElement.querySelectorAll(".page"));
-    console.log(pages);
     const render = () => {
        const url = new URL(document.location.href);
        const pageName = url.hash.replace("#", "");
