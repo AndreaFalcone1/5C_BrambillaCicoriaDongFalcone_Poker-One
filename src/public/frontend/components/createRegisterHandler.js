@@ -25,12 +25,17 @@ export const createRegisterHandler = function(socket) {
             }
 
             // Controllo Data
-            moment().format(); 
             let now = moment();
             let date = moment(data_nascita, "MM-DD-YYYY");
 
-            if (now.diff(date, 'years') < 18 || date > now) {
+            // Controllo se la data è valida
+            if (!date.isValid()) {
                 return 'Data non valida!';
+            }
+
+            // Controllo se l'utente ha almeno 18 anni e che la data non sia futura
+            if (now.diff(date, 'years') < 18 || date.isAfter(now)) {
+                return 'Devi avere almeno 18 anni e la data non può essere futura!';
             }
             
             // Invia se è corretto
