@@ -10,6 +10,8 @@ const createUserList = function (io, socket, users) {
                     username: data.username,
                     table: data.table
                 });
+                socket.username = data.username;
+                socket.emit("utentiOnline", users);
                 socket.broadcast.emit("utentiOnline", users);
             });
             // Appena il frontend richiede la lista user

@@ -1,4 +1,4 @@
-export const generateList = (parentElement, socket) => {
+export const generateUserList = (parentElement, socket) => {
     let data = [];
     let callbackFunc;
   

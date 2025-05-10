@@ -3,6 +3,7 @@ import { createRegisterHandler } from "./frontend/components/createRegisterHandl
 import { createLoginHandler } from "./frontend/components/createLoginHandler.js"
 import { createForm } from "./frontend/components/createForm.js"
 import { createUserList } from "./frontend/components/createUserList.js";
+import { createTableList } from "./frontend/components/createTableList.js";
 
 //
 //  Binding
@@ -58,14 +59,17 @@ registerButton.onclick = function() {
 form.render();
 
 const userList = createUserList(socket);
+const tableList = createTableList(socket);
 
 socket.on("connect", () => {
     socket.emit("connessioneIniziale", {
         username: "nomeut", 
         table: 0,
     });
+    socket.username = "nomeut";
 
     loginHandling.loginReciver();
     userList.getOnlineUsers();
     userList.waitingInvites();
+    tableList.getTableList();
 });

@@ -54,7 +54,7 @@ const io = new Server(server);
 let users = []
 
 // Table
-let currentTables = [];
+let currentTables = [[]];
 
 const mailer = createMailer(nodemailer);
 

@@ -1,9 +1,9 @@
-import { generateList } from "./createLista.js"
+import { generateUserList } from "./generateUserList.js"
 
 export const createUserList = (socket) => {
     return {
         getOnlineUsers: function () {
-            let ul = generateList(document.getElementById("usersList"), socket);
+            let ul = generateUserList(document.getElementById("usersList"), socket);
             ul.setCallback(this.inviteSender);
 
             // Chiedi al backend di inviarti la lista
@@ -21,7 +21,6 @@ export const createUserList = (socket) => {
             socket.on("invitato", data => {
                 let result = confirm("Hai ricevuto un invito da " + data.from);
                 if (result) {
-                    socket.emit("aggiungiTavolo", {codTable: data.table, users: [data.from]});
                     socket.emit("aggiungiPersona", { codTable: data.table, username: data.from });
                 }
             });
