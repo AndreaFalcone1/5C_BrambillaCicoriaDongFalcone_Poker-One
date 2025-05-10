@@ -63,6 +63,23 @@ loginButton.onclick = function() {
                 html += '<tr><td>Bilancio fiches</td><td>' + userData.balance + '</td></tr>';
                 html += '</table>';
                 personalInfosDiv.innerHTML = html;
+
+                const socket2 = io();
+
+                const userList = createUserList(socket2);
+                const tableList = createTableList(socket2);
+
+                socket2.on("connect", () => {
+                    socket2.emit("connessioneIniziale", {
+                        username: userData.username, 
+                        table: 0,
+                    });
+                    socket2.username = userData.username;
+                
+                    userList.getOnlineUsers();
+                    userList.waitingInvites();
+                    tableList.getTableList();
+                });
     
             } else {
                 document.getElementById('errorDiv').classList.remove('hidden');
@@ -90,18 +107,3 @@ registerButton.onclick = function() {
 }
 
 form.render();
-
-const userList = createUserList(socket);
-const tableList = createTableList(socket);
-
-socket.on("connect", () => {
-    socket.emit("connessioneIniziale", {
-        username: "nomeut", 
-        table: 0,
-    });
-    socket.username = "nomeut";
- 
-    userList.getOnlineUsers();
-    userList.waitingInvites();
-    tableList.getTableList();
-});
