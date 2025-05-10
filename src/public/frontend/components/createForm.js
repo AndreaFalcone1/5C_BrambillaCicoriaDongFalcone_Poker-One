@@ -18,6 +18,7 @@ export const createForm = (parentElement) => {
                     <button type="button" class="btn btn-primary" id="loginCancel">Cancel</button>
                 </div>
             </form>
+            <div id="errorDiv" class="hidden error">Errore in fase di login!</div>
         </div>
     `;
 
