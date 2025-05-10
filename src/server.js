@@ -25,7 +25,8 @@ const createRegisterHandler = require("./backend/components/createRegisterHandle
 const createLoginHandler = require("./backend/components/createLoginHandler.js");
 const createUserList = require("./backend/components/createUserList.js");
 const createMailer  = require("./backend/components/createMailer.js");
-const createDatabase  = require("./backend/components/createDatabase.js")
+const createDatabase  = require("./backend/components/createDatabase.js");
+const createTableList = require("./backend/components/createTableList.js");
 
 
 //
@@ -52,6 +53,9 @@ const io = new Server(server);
 // Online users
 let users = []
 
+// Table
+let currentTables = [];
+
 const mailer = createMailer(nodemailer);
 
 const database = createDatabase(mysql);
@@ -71,6 +75,10 @@ io.on('connection', (socket) => {
     const userList = createUserList(io, socket, users);
     userList.setOnlineUsers();
     userList.inviteSender();
+
+    // Tablelist
+    const tableList = createTableList(socket, currentTables, users);
+    tableList.setTable()
 
 });
 

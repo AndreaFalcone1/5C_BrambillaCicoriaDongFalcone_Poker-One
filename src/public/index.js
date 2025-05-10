@@ -20,21 +20,7 @@ const divForm = document.getElementById("divFormLoginRegister");
 const form = createForm(divForm);
 
 const socket = io();
-/*
-socket.on("connect", () => {
-    
-    const userList = createUserList(socket);
 
-    socket.emit("connessioneIniziale", {
-        username: "nomeut", 
-        table: null,
-    });
-
-    loginHandling.loginReciver();
-    userList.getOnlineUsers();
-    userList.waitingInvites();
-});
-*/
 
 const loginHandling = createLoginHandler(socket);
 const registerHandling = createRegisterHandler(socket);
@@ -70,3 +56,16 @@ registerButton.onclick = function() {
 }
 
 form.render();
+
+const userList = createUserList(socket);
+
+socket.on("connect", () => {
+    socket.emit("connessioneIniziale", {
+        username: "nomeut", 
+        table: 0,
+    });
+
+    loginHandling.loginReciver();
+    userList.getOnlineUsers();
+    userList.waitingInvites();
+});

@@ -19,7 +19,11 @@ export const createUserList = (socket) => {
         },
         waitingInvites: function () {
             socket.on("invitato", data => {
-                alert("Hai ricevuto un invito da " + data.from);
+                let result = confirm("Hai ricevuto un invito da " + data.from);
+                if (result) {
+                    socket.emit("aggiungiTavolo", {codTable: data.table, users: [data.from]});
+                    socket.emit("aggiungiPersona", { codTable: data.table, username: data.from });
+                }
             });
         },
         inviteSender: function (invited, table) {
