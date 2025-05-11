@@ -81,7 +81,6 @@ loginButton.onclick = function() {
                     userList.waitingInvites();
                     tableList.getTableList();
                 });
-    
             } else {
                 document.getElementById('errorDiv').classList.remove('hidden');
             }
