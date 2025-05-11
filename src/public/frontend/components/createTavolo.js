@@ -1,7 +1,7 @@
 import { createMazzo } from "./createMazzo.js";
 
-export const createTavolo = () => {
-    let socket;
+export const createTavolo = (socketParam) => {
+    let socket = socketParam;
     let state = {
         id: null,
         username: null,
@@ -16,8 +16,6 @@ export const createTavolo = () => {
     const mazzo = createMazzo();
 
     const connect = ({ id, username, chips }) => {
-        socket = io("http://localhost:3000");
-
         state.id = id;
         state.username = username;
         state.chips = chips;
