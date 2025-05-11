@@ -1,5 +1,3 @@
-import moment from "/node_modules/moment/dist/moment.js";
-
 export const createRegisterHandler = function(socket) {
     return {
         registerSender: function (email, username, nome, cognome, data_nascita) {
