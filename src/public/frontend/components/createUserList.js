@@ -1,4 +1,5 @@
 import { generateUserList } from "./generateUserList.js"
+import { createModal } from "./createModal.js";
 
 export const createUserList = (socket) => {
 
@@ -20,10 +21,11 @@ export const createUserList = (socket) => {
         },
         waitingInvites: function () {
             socket.on("invitato", data => {
-                let result = confirm("Hai ricevuto un invito da " + data.from);
-                if (result) {
-                    socket.emit("aggiungiPersona", { codTable: data.table, username: data.from });
-                }
+                let modal = createModal(new bootstrap.Modal(document.getElementById("invitoModal")));
+                modal.setModal((ct, usr) => {
+                    socket.emit("aggiungiPersona", { codTable: ct, username: usr})
+                }, data.table, data.from);
+                modal.show();
             });
         },
         inviteSender: function (invited, table) {
