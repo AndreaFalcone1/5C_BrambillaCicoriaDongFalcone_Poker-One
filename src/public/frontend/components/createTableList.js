@@ -17,6 +17,7 @@ export const createTableList = (socket) => {
 
         joinTable: function (codTable, username) {
             socket.emit("aggiungiPersona", { codTable, username });
+            location.href = "#table";
         }
     }
 }

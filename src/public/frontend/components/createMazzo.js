@@ -1,26 +1,21 @@
 export const createMazzo = () => {
-
-    let creation_URL = "https://www.deckofcardsapi.com/api/deck/new/";
-    let draw_URL = "https://www.deckofcardsapi.com/api/deck/$DECK_ID/draw/?count=$CARD_AMMOUNT";
+    let deckId = null;
 
     return {
-        build: function() {
-            fetch(creation_URL)
-            .then(r => r.json())
-            .then((data) => {
-                if (data.success) {
-                    draw_URL = draw_URL.replace("$DECK_ID", data.deck_id);
-                    console.log(draw_URL);
-                    return true;
-                }
-                return false;
-            });
+        build: async function () {
+            const res = await fetch("https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1");
+            const data = await res.json();
+            if (data.success) {
+                deckId = data.deck_id;
+                return true;
+            }
+            return false;
         },
-        draw: function(num) {
-            fetch(draw_URL.replace("$CARD_AMMOUNT", num))
-            .then((json) => {
-                return JSON.stringify(json);
-            })
-        },
-    }
-}
+        draw: async function (num) {
+            if (!deckId) throw new Error("Deck not built yet");
+            const res = await fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=${num}`);
+            const data = await res.json();
+            return data.cards;
+        }
+    };
+};

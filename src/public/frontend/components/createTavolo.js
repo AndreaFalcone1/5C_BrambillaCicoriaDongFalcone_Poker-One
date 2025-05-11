@@ -71,6 +71,7 @@ export const createTavolo = (socketParam) => {
             mazzo.draw(2).then((cards) => {
                 state.hand = cards;
                 socket.emit("your_cards", cards);
+                render();
             });
         });
     };
@@ -82,15 +83,30 @@ export const createTavolo = (socketParam) => {
     };
 
     const render = () => {
-        document.getElementById("hand").innerHTML =
-            state.hand.map(c => `<img src="${c.image}" alt="${c.code}" />`).join('');
-        document.getElementById("community").innerHTML =
-            state.communityCards.map(c => `<img src="${c.image}" alt="${c.code}" />`).join('');
-        document.getElementById("pot").textContent = `Piatto: ${state.pot}`;
+        const handDiv = document.getElementById("hand");
+        const communityDiv = document.getElementById("community");
+        const potEl = document.getElementById("pot");
+
+        if (handDiv) {
+            handDiv.innerHTML = state.hand.map(c => `<img src="${c.image}" alt="${c.code}" />`).join('');
+        }
+        if (communityDiv) {
+            communityDiv.innerHTML = state.communityCards.map(c => `<img src="${c.image}" alt="${c.code}" />`).join('');
+        }
+        if (potEl) {
+            potEl.textContent = `Piatto: ${state.pot}`;
+        }
     };
 
     const renderControls = () => {
-        document.getElementById("controls").style.display = state.isMyTurn ? "block" : "none";
+        const controlsDiv = document.getElementById("controls");
+        if (controlsDiv) {
+            if (state.isMyTurn) {
+                controlsDiv.classList.remove("disabled");
+            } else {
+                controlsDiv.classList.add("disabled");
+            }
+        }
     };
 
     return {
@@ -98,6 +114,6 @@ export const createTavolo = (socketParam) => {
         fold: () => sendAction({ type: "fold" }),
         call: () => sendAction({ type: "call" }),
         raise: (amount) => sendAction({ type: "raise", amount }),
-        startRound,
+        startRound
     };
 };
