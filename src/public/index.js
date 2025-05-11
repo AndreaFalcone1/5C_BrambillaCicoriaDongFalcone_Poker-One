@@ -17,7 +17,7 @@ const registerButton = document.getElementById("register");
 
 const divForm = document.getElementById("divFormLoginRegister");
 
-const newTableButton = document.getElementById('newTable');;
+const newTableButton = createTavolo(document.getElementById("newTable"));
 
 //
 //  Vars
@@ -53,7 +53,7 @@ loginButton.onclick = function() {
                 divForm.classList.add('hidden');
                 document.getElementById('errorDiv').classList.add('hidden');
                 location.href = '#lobby';
-    
+                //da sistemare
                 const personalInfosDiv = document.getElementById('personalInformations');
     
                 let html = '<table class="table">';
@@ -111,5 +111,22 @@ registerButton.onclick = function() {
 form.render();
 
 newTableButton.onclick = function() {
-    
+    if (!userData) {
+        console.error("Nessun utente connesso. Impossibile creare un nuovo tavolo.");
+        return;
+    }
+    const nomeTavolo = userData.username + "'s Tavolo"; 
+    const datiNuovoTavolo = {
+        nome: nomeTavolo,
+        creatore: userData.username
+    };
+    socket.emit("creaNuovoTavolo", datiNuovoTavolo, function(response) {
+        if (response && response.success) {
+            console.log("Nuovo tavolo creato con successo:", response.data);
+            tableList.getTableList();
+        } else {
+            console.error("Creazione del nuovo tavolo fallita:", response.message);
+        }
+    });
 }
+
