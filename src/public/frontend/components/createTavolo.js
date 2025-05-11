@@ -1,4 +1,4 @@
-import { createMazzo } from "./createMazzo";
+import { createMazzo } from "./createMazzo.js";
 
 export const createTavolo = () => {
     let socket;

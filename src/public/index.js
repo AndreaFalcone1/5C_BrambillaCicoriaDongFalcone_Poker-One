@@ -4,6 +4,7 @@ import { createLoginHandler } from "./frontend/components/createLoginHandler.js"
 import { createForm } from "./frontend/components/createForm.js"
 import { createUserList } from "./frontend/components/createUserList.js";
 import { createTableList } from "./frontend/components/createTableList.js";
+import { createTavolo } from "./frontend/components/createTavolo.js";
 
 location.href="#welcome";
 
@@ -16,7 +17,7 @@ const registerButton = document.getElementById("register");
 
 const divForm = document.getElementById("divFormLoginRegister");
 
-const navigator = createNavigator(document.getElementById('bodyContainer'));
+const newTableButton = document.getElementById('newTable');;
 
 //
 //  Vars
@@ -26,9 +27,10 @@ const form = createForm(divForm);
 
 const socket = io();
 
-
 const loginHandling = createLoginHandler(socket);
 const registerHandling = createRegisterHandler(socket);
+
+const navigator = createNavigator(document.getElementById('bodyContainer'));
 
 let userData ;
 
@@ -80,7 +82,7 @@ loginButton.onclick = function() {
                     userList.waitingInvites();
                     tableList.getTableList();
                 });
-    
+
             } else {
                 document.getElementById('errorDiv').classList.remove('hidden');
             }
@@ -107,3 +109,7 @@ registerButton.onclick = function() {
 }
 
 form.render();
+
+newTableButton.onclick = function() {
+    
+}

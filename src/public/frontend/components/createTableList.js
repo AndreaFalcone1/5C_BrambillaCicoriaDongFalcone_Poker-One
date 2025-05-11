@@ -3,7 +3,7 @@ import { generateTableList } from "./generateTableList.js";
 export const createTableList = (socket) => {
     return {
         getTableList: function () {
-            let ul = generateTableList(document.getElementById("tablesList"), socket);
+            let ul = generateTableList(document.getElementById("list"), socket);
             ul.setCallback(this.joinTable);
 
             socket.emit("reqTavoliDisp");
