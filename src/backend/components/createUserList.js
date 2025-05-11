@@ -27,8 +27,10 @@ const createUserList = function (io, socket, users) {
             });
             // Utente si disconnette
             socket.on('disconnect', () => {
-                users = users.filter(user => user.id !== socket.id);
-                console.log(users);
+                const index = users.findIndex(user => user.id === socket.id);
+                if (index !== -1) {
+                    users.splice(index, 1); 
+                }
                 socket.broadcast.emit("utentiOnline", users);
             });
         },

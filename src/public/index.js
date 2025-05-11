@@ -63,7 +63,6 @@ loginButton.onclick = function() {
                 html += '<tr><td>Bilancio fiches</td><td>' + userData.balance + '</td></tr>';
                 html += '</table>';
                 personalInfosDiv.innerHTML = html;
-
                 const socket2 = io();
 
                 const userList = createUserList(socket2);
@@ -80,7 +79,6 @@ loginButton.onclick = function() {
                     userList.waitingInvites();
                     tableList.getTableList();
                 });
-    
             } else {
                 document.getElementById('errorDiv').classList.remove('hidden');
             }

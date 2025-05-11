@@ -1,6 +1,7 @@
 import { generateUserList } from "./generateUserList.js"
 
 export const createUserList = (socket) => {
+
     return {
         getOnlineUsers: function () {
             let ul = generateUserList(document.getElementById("usersList"), socket);

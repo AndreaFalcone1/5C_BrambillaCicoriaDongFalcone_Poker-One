@@ -34,7 +34,9 @@ const createTableList = function(socket, tables, userList) {
             });
 
             socket.on("abbandonoUtente", () => {
-                tables = tables.map(table => table.filter(e => e !== socket.username));
+                for (let i = 0; i < tables.length; i++) {
+                    tables[i] = tables[i].filter(e => e !== socket.username);
+                }
                 userList.forEach(u => {
                     if (u.username == socket.username) u.table = null;
                 });
@@ -47,7 +49,9 @@ const createTableList = function(socket, tables, userList) {
             });
 
             socket.on("disconnect", () => {
-                tables = tables.map(table => table.filter(e => e !== socket.username));
+                tables.forEach((table, i) => {
+                    tables[i] = table.filter(e => e !== socket.username);
+                });
                 socket.broadcast.emit("tavoliDisp", tables);
             });
         }
