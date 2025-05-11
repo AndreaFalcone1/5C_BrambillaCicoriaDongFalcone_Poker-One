@@ -4,6 +4,7 @@ import { createLoginHandler } from "./frontend/components/createLoginHandler.js"
 import { createForm } from "./frontend/components/createForm.js"
 import { createUserList } from "./frontend/components/createUserList.js";
 import { createTableList } from "./frontend/components/createTableList.js";
+import { createTavolo } from "./frontend/components/createTavolo.js";
 
 location.href="#welcome";
 
@@ -16,7 +17,7 @@ const registerButton = document.getElementById("register");
 
 const divForm = document.getElementById("divFormLoginRegister");
 
-const navigator = createNavigator(document.getElementById('bodyContainer'));
+const newTableButton = createTavolo(document.getElementById("newTable"));
 
 //
 //  Vars
@@ -26,9 +27,10 @@ const form = createForm(divForm);
 
 const socket = io();
 
-
 const loginHandling = createLoginHandler(socket);
 const registerHandling = createRegisterHandler(socket);
+
+const navigator = createNavigator(document.getElementById('bodyContainer'));
 
 let userData ;
 
@@ -51,7 +53,7 @@ loginButton.onclick = function() {
                 divForm.classList.add('hidden');
                 document.getElementById('errorDiv').classList.add('hidden');
                 location.href = '#lobby';
-    
+                //da sistemare
                 const personalInfosDiv = document.getElementById('personalInformations');
     
                 let html = '<table class="table">';
@@ -72,7 +74,7 @@ loginButton.onclick = function() {
                 socket2.on("connect", () => {
                     socket2.emit("connessioneIniziale", {
                         username: userData.username, 
-                        table: 0,
+                        table: null,
                     });
                     socket2.username = userData.username;
                 
@@ -80,7 +82,7 @@ loginButton.onclick = function() {
                     userList.waitingInvites();
                     tableList.getTableList();
                 });
-    
+
             } else {
                 document.getElementById('errorDiv').classList.remove('hidden');
             }
@@ -107,3 +109,24 @@ registerButton.onclick = function() {
 }
 
 form.render();
+
+newTableButton.onclick = function() {
+    if (!userData) {
+        console.error("Nessun utente connesso. Impossibile creare un nuovo tavolo.");
+        return;
+    }
+    const nomeTavolo = userData.username + "'s Tavolo"; 
+    const datiNuovoTavolo = {
+        nome: nomeTavolo,
+        creatore: userData.username
+    };
+    socket.emit("creaNuovoTavolo", datiNuovoTavolo, function(response) {
+        if (response && response.success) {
+            console.log("Nuovo tavolo creato con successo:", response.data);
+            tableList.getTableList();
+        } else {
+            console.error("Creazione del nuovo tavolo fallita:", response.message);
+        }
+    });
+}
+

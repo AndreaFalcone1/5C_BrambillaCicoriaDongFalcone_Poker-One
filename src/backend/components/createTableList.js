@@ -15,12 +15,11 @@ const createTableList = function(socket, tables, userList) {
                     if (users.includes(u.username)) u.table = index;
                 });
                 socket.broadcast.emit("tavoliDisp", tables);
-                console.log(tables);
             });
 
             socket.on("aggiungiPersona", ({ codTable, username }) => {
-                if (!tables[codTable].includes(username)) 
-                    tables[codTable].push(username);
+                if (!tables[codTable]?.includes(username)) 
+                    tables[codTable]?.push(username);
                 userList.forEach(u => {
                     if (u.username == username) u.table = codTable;
                 });
