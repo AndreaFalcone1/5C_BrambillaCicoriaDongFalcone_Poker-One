@@ -4,7 +4,7 @@ const createLoginHandler = function(socket, users) {
         loginReciver: function (database) {
             socket.on('loginSender', async (message) => {
                 let data = await database.getUser(message.email, message.password);
-
+                
                 if (data.length === 1 && users.find(user => user.username === data[0].username) === undefined) {
                     socket.username = data[0].username;
                     socket.table = null;

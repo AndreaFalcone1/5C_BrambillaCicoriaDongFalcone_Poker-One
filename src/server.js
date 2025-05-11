@@ -27,7 +27,7 @@ const createUserList = require("./backend/components/createUserList.js");
 const createMailer  = require("./backend/components/createMailer.js");
 const createDatabase  = require("./backend/components/createDatabase.js");
 const createTableList = require("./backend/components/createTableList.js");
-
+const createTable = require("./backend/components/createTableHandler.js");
 
 //
 //  Code
