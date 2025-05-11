@@ -94,7 +94,7 @@ export const createTavolo = (socketParam) => {
             communityDiv.innerHTML = state.communityCards.map(c => `<img src="${c.image}" alt="${c.code}" />`).join('');
         }
         if (potEl) {
-            potEl.textContent = `Piatto: ${state.pot}`;
+            potEl.textContent = `Pot: ${state.pot}`;
         }
     };
 
