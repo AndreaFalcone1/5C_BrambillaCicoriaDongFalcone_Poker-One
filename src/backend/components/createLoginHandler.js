@@ -7,8 +7,6 @@ const createLoginHandler = function(socket) {
                 console.log(data);
 
                 if (data.length === 1) {
-                    socket.username = data[0].username;
-                    socket.table = null;
                     socket.emit('loginReciver', {
                         response: 'ok',
                         data: data[0]
